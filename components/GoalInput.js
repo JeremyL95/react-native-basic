@@ -9,8 +9,10 @@ export default function GoalInput(props) {
     }
 
     function addGoalHandler() {
-        props.addGoal(goal);
-        setGoal('');
+        if (goal !== "") {
+            props.addGoal(goal);
+            setGoal('');
+        }
     }
 
     return (

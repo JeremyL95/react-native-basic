@@ -1,7 +1,11 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
 export default function GoalItem(props) {
-    return <Text style={styles.listText}>{props.text}</Text>
+    return (
+        <Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
+            <Text style={styles.listText}>{props.text}</Text>
+        </Pressable>
+    )
 }
 
 const styles = StyleSheet.create({
