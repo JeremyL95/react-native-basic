@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { useState } from 'react';
 import GoalItem from './components/GoalItem.js';
 import GoalInput from './components/GoalInput.js';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -28,31 +29,34 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.btnAdd}>
-        <Button
-          title="Add New Goal"
-          color="skyblue"
-          onPress={handleModalVisibility} />
-      </View>
+    <>
+      <StatusBar style="auto" />
+      <View style={styles.container}>
+        <View style={styles.btnAdd}>
+          <Button
+            title="Add New Goal"
+            color="#87ceeb"
+            onPress={handleModalVisibility} />
+        </View>
 
-      {modalVisible &&
-        <GoalInput
-          addGoal={addGoalHandler}
-          visible={modalVisible}
-          closeModal={hideModalVisibility} />
-      }
+        {modalVisible &&
+          <GoalInput
+            addGoal={addGoalHandler}
+            visible={modalVisible}
+            closeModal={hideModalVisibility} />
+        }
 
-      <View style={styles.listContainer}>
-        <FlatList
-          data={lists}
-          renderItem={(itemData) => {
-            return <GoalItem id={itemData.item.id} text={itemData.item.text} onDeleteItem={removeGoalHandler} />
-          }}
-          keyExtractor={(item) => item.id}
-          alwaysBounceVertical={false} />
+        <View style={styles.listContainer}>
+          <FlatList
+            data={lists}
+            renderItem={(itemData) => {
+              return <GoalItem id={itemData.item.id} text={itemData.item.text} onDeleteItem={removeGoalHandler} />
+            }}
+            keyExtractor={(item) => item.id}
+            alwaysBounceVertical={false} />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -61,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
-    backgroundColor: '#FFF'
+    backgroundColor: '#fff'
   },
   listContainer: {
     flex: 5,

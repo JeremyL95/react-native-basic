@@ -16,7 +16,7 @@ export default function GoalItem(props) {
 const styles = StyleSheet.create({
     listItem: {
         borderRadius: 8,
-        backgroundColor: 'skyblue',
+        backgroundColor: '#87ceeb',
         padding: 8,
         marginBottom: 8,
     },
