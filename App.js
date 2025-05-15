@@ -29,10 +29,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Button
-        title="Add New Goal"
-        color="skyblue"
-        onPress={handleModalVisibility} />
+      <View style={styles.btnAdd}>
+        <Button
+          title="Add New Goal"
+          color="skyblue"
+          onPress={handleModalVisibility} />
+      </View>
 
       {modalVisible &&
         <GoalInput
@@ -63,5 +65,8 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 5,
+  },
+  btnAdd: {
+    marginBottom: 16
   }
 });
